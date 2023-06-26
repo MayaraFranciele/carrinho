@@ -8,9 +8,12 @@ function adicionarItem(item){
     qtd[item] += 1; 
     valorTotal[item] = Number.parseFloat(valorProduto[item]) * qtd[item];
     quantidade.innerHTML = qtd[item];
-    total.innerHTML = valorTotal[item].toFixed(2);
+    total.innerHTML =  parseFloat(valorTotal[item]).toFixed(2);
+    total.innerHTML = total.innerHTML.replace(".", ",");
     valorCompra()
 }
+
+
 
 function removerItem(item){
     if (qtd[item] > 0){
@@ -19,7 +22,8 @@ function removerItem(item){
         var total = document.getElementById("total" + item);
         quantidade.innerHTML = qtd[item];
         valorTotal[item] = Number.parseFloat(valorProduto[item]) * qtd[item];
-        total.innerHTML = valorTotal[item].toFixed(2);
+        total.innerHTML = parseFloat(valorTotal[item]).toFixed(2);
+        total.innerHTML = total.innerHTML.replace(".", ",");
         valorCompra()
     }
 }
@@ -31,6 +35,7 @@ function valorCompra(){
     for(var i = 0; i < valorTotal.length; i++){
         valor += valorTotal[i];
     }
-    valorTotalCompra.innerHTML = valor.toFixed(2);
+    valorTotalCompra.innerHTML = parseFloat(valor).toFixed(2);
+    valorTotalCompra.innerHTML = valorTotalCompra.innerHTML.replace(".", ",");
 
 }
